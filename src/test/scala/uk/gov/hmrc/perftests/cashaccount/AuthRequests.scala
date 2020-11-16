@@ -35,7 +35,7 @@ trait AuthRequests {
     "enrolment[0].state" -> "Activated",
     "enrolment[0].name" -> "HMRC-CUS-ORG",
     "enrolment[0].taxIdentifier[0].name" -> "EORINumber",
-    "enrolment[0].taxIdentifier[0].value" -> "GB744638982000"
+    "enrolment[0].taxIdentifier[0].value" -> "${eoriNumber}"
   )
 
   setup("login", "Login") withRequests(
