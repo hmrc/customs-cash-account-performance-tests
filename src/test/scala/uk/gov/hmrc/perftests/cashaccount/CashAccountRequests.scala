@@ -25,7 +25,7 @@ trait CashAccountRequests {
 
   private val baseUrl: String = baseUrlFor("customs-cash-account-frontend")
 
-  setup("view-cash-account", "Add journey") withRequests(
+  setup("view-cash-account", "Cash account journey") withRequests(
     getPage("Cash account page", s"$baseUrl/customs/cash-account"),
     )
 }
