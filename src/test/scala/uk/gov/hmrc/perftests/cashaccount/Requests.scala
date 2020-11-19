@@ -50,8 +50,8 @@ object Requests {
           values
         }
       )
-      .check(status.is(200))
-      .check(currentLocation.is(nextPage))
+      .check(status.is(303))
+      .check(currentLocation.is(currentPage))
   }
 
 }
