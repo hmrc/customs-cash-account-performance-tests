@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,8 @@ trait CashAccountRequests {
     getPage("Cash account page", s"$baseUrl/customs/cash-account")
     )
 
-  setup("search-and-download-cash-transactions", "search and download cash transactions") withRequests(
+  val searchAndDownloadSetup = setup("search-and-download-cash-transactions", "search and download cash transactions")
+  searchAndDownloadSetup.withRequests(
     getPage("search page", saveToken = true, s"$baseUrl/customs/cash-account/request-cash-transactions"),
     postPage("search page", s"$baseUrl/customs/cash-account/request-cash-transactions", s"$baseUrl/customs/cash-account/requested-cash-transactions", searchPayload),
     getPage("download cash transactions", s"$baseUrl/customs/cash-account/download-requested-csv?from=2021-02-01&to=2021-03-31&disposition=inline")
