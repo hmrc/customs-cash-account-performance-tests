@@ -26,8 +26,10 @@ trait CashAccountRequests {
   private val baseUrl: String = baseUrlFor("customs-cash-account-frontend")
 
   val searchPayload = Map(
+    "start.day" -> "1",
     "start.month" -> "2",
     "start.year" -> "2021",
+    "end.day" -> "1",
     "end.month" -> "3",
     "end.year" -> "2021"
   )
