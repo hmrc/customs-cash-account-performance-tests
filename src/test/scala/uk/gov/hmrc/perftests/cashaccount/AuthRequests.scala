@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,22 +27,22 @@ trait AuthRequests {
   private val baseUrl: String = baseUrlFor("customs-cash-account-frontend")
 
   val loginStubPayload = Map(
-    "authorityId" -> "",
+    "authorityId" -> "test001",
     "redirectionUrl" -> (baseUrl + "/customs/cash-account"),
-    "credentialStrength" -> "weak",
+    "credentialStrength" -> "strong",
     "confidenceLevel" -> "50",
     "affinityGroup" -> "Organisation",
-    "enrolment[0].state" -> "Activated",
     "enrolment[0].name" -> "HMRC-CUS-ORG",
     "enrolment[0].taxIdentifier[0].name" -> "EORINumber",
-    "enrolment[0].taxIdentifier[0].value" -> "${eoriNumber}"
+    "enrolment[0].taxIdentifier[0].value" -> "${eoriNumber}",
+    "enrolment[0].state" -> "Activated"
   )
 
   val loginSetup = setup("login", "Login")
   loginSetup.withRequests(
     getPage("Auth Page", authUrl),
-    postPage("Post Auth Page", postToken = false, authUrl, s"$baseUrl/customs/cash-account", loginStubPayload)
+    postPage(
+      "Post Auth Page", postToken = false, authUrl,
+      s"$baseUrl/customs/cash-account", loginStubPayload)
   )
-
-
 }

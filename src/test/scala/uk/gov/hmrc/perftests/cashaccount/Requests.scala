@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,21 +35,36 @@ object Requests {
     }
   }
 
-  def getPage(stepName: String, url: String): HttpRequestBuilder = {
+  def getPage(stepName: String,
+              url: String): HttpRequestBuilder = {
     getPage(stepName, saveToken = false, url)
   }
 
-  def postPage(stepName: String, currentPage: String, nextPage: String, value: String): HttpRequestBuilder =
+  def postPage(stepName: String,
+               currentPage: String,
+               nextPage: String,
+               value: String): HttpRequestBuilder =
     postPage(stepName, postToken = true, currentPage, nextPage, value)
 
-  def postPage(stepName: String, postToken: Boolean, currentPage: String, nextPage: String, value: String): HttpRequestBuilder =
+  def postPage(stepName: String,
+               postToken: Boolean,
+               currentPage: String,
+               nextPage: String,
+               value: String): HttpRequestBuilder =
     postPage(stepName, postToken, currentPage, nextPage, Map("value" -> value))
 
-  def postPage(stepName: String, currentPage: String, nextPage: String, values: Map[String, String]): HttpRequestBuilder = {
+  def postPage(stepName: String,
+               currentPage: String,
+               nextPage: String,
+               values: Map[String, String]): HttpRequestBuilder = {
     postPage(stepName, postToken = true, currentPage, nextPage, values)
   }
 
-  def postPage(stepName: String, postToken: Boolean, currentPage: String, nextPage: String, values: Map[String, String]): HttpRequestBuilder = {
+  def postPage(stepName: String,
+               postToken: Boolean,
+               currentPage: String,
+               nextPage: String,
+               values: Map[String, String]): HttpRequestBuilder = {
     http(_ => "Post " + stepName)
       .post(currentPage)
       .formParamMap(
