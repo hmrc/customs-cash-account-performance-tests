@@ -27,7 +27,7 @@ trait AuthRequests {
   private val baseUrl: String = baseUrlFor("customs-cash-account-frontend")
 
   val loginStubPayload = Map(
-    "authorityId" -> "test001",
+    "authorityId" -> "",
     "redirectionUrl" -> (baseUrl + "/customs/cash-account"),
     "credentialStrength" -> "strong",
     "confidenceLevel" -> "50",
